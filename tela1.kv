@@ -1,25 +1,182 @@
-GridLayout:
-    cols: 1
-    Label:
-        id: titulo
-        text: "Iservice"  
-        font_size: 50
-        #text_size: self.size 
-    Label:
-        id: subtitulo
-        text: "Selecione a opção desejada:"
-        font_size: 40
-        #text_size: self.size 
+WindowManager:
+    MainWin:
+    Cliente:
+    Prestador:
+
+<MainWin>:
+    name: "MainWin"
+    GridLayout:
+        cols: 1
+        size: root.width - 200, root.height - 200
+
+        GridLayout:
+            cols: 1
+
+            Label:
+                id: titulo
+                text: "Iservice"
+                font_size: 50
+                #text_size: self.size
+
+            Label:
+                id: subtitulo
+                text: "Selecione a opção desejada:"
+                font_size: 25
+                #text_size: self.size
+
+            Button:
+                text:'Prestador de Serviço'
+                on_release: app.root.current = "Prestador"
+                id: trabalhador
+                #text: "Prestador de Serviço"
+                #font_size: 20
+                #text_size: self.size
+
+            Button:
+                text: 'Cliente'
+                on_release: app.root.current = "Cliente"
+                id: cliente
+                font_size: 20
+                #text_size: self.size
+
+<Cliente>:
+    size_hint_y: 0.7
+    size_hint_x: 0.7
+    name: "Cliente"
+
+    nome: nome
+    email: email
+    tel: tel
+
+    GridLayout:
+        cols: 1
+        size: root.width, root.height
+        pos: 240, 30
+
+        GridLayout:
+            size_hint_y: None
+            size_hint_x: None
+            cols: 2
+            size: root.width, root.height
+
+            Label:
+                size_hint_y: None
+                size_hint_x: None
+                text: "Nome: "
+                size: 50, 50
+            TextInput:
+                write_tab: False
+                size_hint_y: None
+                size_hint_x: None
+                size: 250, 50
+                id: nome
+                text: ""
+                multiline: False
+
+            Label:
+                size_hint_y: None
+                size_hint_x: None
+                text: "Email: "
+                size: 50, 50
+            TextInput:
+                write_tab: False
+                size_hint_y: None
+                size_hint_x: None
+                size: 250, 50
+                id: email
+                text: ""
+                multiline: False
+
+            Label:
+                size_hint_y: None
+                size_hint_x: None
+                text: "Tel: "
+                size: 50, 50
+            TextInput:
+                write_tab: False
+                size_hint_y: None
+                size_hint_x: None
+                size: 250, 50
+                id: tel
+                multiline: False
+
     Button:
-        text:'Prestador de Serviço'
-        on_release: root.ir() 
-        id: trabalhador
-        #text: "Prestador de Serviço"  
-        #font_size: 20
-        #text_size: self.size      
+        size_hint_y: None
+        size_hint_x: None
+        text: "Finalizar"
+        size: 250, 50
+        pos: 270, 200
+        on_release:
+            root.btn()
+            app.root.current = "MainWin"
+
+<Prestador>:
+    size_hint_y: 0.7
+    size_hint_x: 0.7
+    name: "Prestador"
+
+    empresa: empresa
+    cnpj: cnpj
+    servico: servico
+
+    GridLayout:
+        cols: 1
+        size: root.width, root.height
+        pos: 240, 30
+
+        GridLayout:
+            size_hint_y: None
+            size_hint_x: None
+            cols: 2
+            size: root.width, root.height
+
+            Label:
+                size_hint_y: None
+                size_hint_x: None
+                text: "Empresa: "
+                size: 50, 50
+            TextInput:
+                write_tab: False
+                size_hint_y: None
+                size_hint_x: None
+                size: 250, 50
+                id: empresa
+                text: ""
+                multiline: False
+
+            Label:
+                size_hint_y: None
+                size_hint_x: None
+                text: "CNPJ: "
+                size: 50, 50
+            TextInput:
+                write_tab: False
+                size_hint_y: None
+                size_hint_x: None
+                size: 250, 50
+                id: cnpj
+                text: ""
+                multiline: False
+
+            Label:
+                size_hint_y: None
+                size_hint_x: None
+                text: "Serviço: "
+                size: 50, 50
+            TextInput:
+                write_tab: False
+                size_hint_y: None
+                size_hint_x: None
+                size: 250, 50
+                id: servico
+                multiline: False
+
     Button:
-        text: 'Cliente' 
-        on_release: root.ir()   
-        id: cliente
-        font_size: 20
-        #text_size: self.size         
+        size_hint_y: None
+        size_hint_x: None
+        text: "Finalizar"
+        size: 250, 50
+        pos: 270, 200
+        on_release:
+            root.btn()
+            app.root.current = "MainWin"
